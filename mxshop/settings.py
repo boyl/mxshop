@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'xadmin',
     'crispy_forms',
-    'DjangoUeditor'
+    'DjangoUeditor',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -133,4 +134,14 @@ STATIC_URL = '/static/'
 # Overriding default settings
 AUTH_USER_MODEL = 'users.UserProfile'
 
+MEDIA_URL = "/media/"
+
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# Rest framework settings
+REST_FRAMEWORK = {
+    # 分页
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    # 每页显示的个数
+    'PAGE_SIZE': 10,
+}

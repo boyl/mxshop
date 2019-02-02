@@ -13,11 +13,25 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path, include
+from django.urls import path, include, re_path
+from django.views.static import serve
+from django.conf import settings
+
+from rest_framework.documentation import include_docs_urls
+from rest_framework.routers import DefaultRouter
 
 import xadmin
 
+router = DefaultRouter()
+
 urlpatterns = [
+    re_path('^', include(router.urls)),
+
     path('xadmin/', xadmin.site.urls),
     path('ueditor/', include('DjangoUeditor.urls')),
+
+    path('docs', include_docs_urls(title='仙剑奇侠传')),
+    path('api-auth/', include('rest_framework.urls')),
+
+    path('media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT})
 ]

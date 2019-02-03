@@ -22,7 +22,11 @@ from rest_framework.routers import DefaultRouter
 
 import xadmin
 
+from goods.views import CategoryViewSet, GoodsListViewSet
+
 router = DefaultRouter()
+router.register(r'goods', GoodsListViewSet, base_name="goods")
+router.register(r'categorys', CategoryViewSet, base_name="categorys")
 
 urlpatterns = [
     re_path('^', include(router.urls)),

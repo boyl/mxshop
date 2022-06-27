@@ -21,7 +21,7 @@ jdcal==1.4
 Jinja2==2.10
 Markdown==3.0.1
 MarkupSafe==1.1.0
-mysql-connector-python==8.0.13
+mysql-connector-python==8.0.14
 mysqlclient==1.4.1
 odfpy==1.4.0
 openpyxl==2.5.12
